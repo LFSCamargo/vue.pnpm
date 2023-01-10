@@ -32,7 +32,7 @@ import LightSwitch from "./LightSwitch.vue";
           <ConnectWalletModal />
           <LightSwitch />
           <PopoverButton
-            class="flex p-2 flex-none cursor-pointer items-center justify-center rounded-xl ring-1 text-brand ring-slate-900/10 dark:ring-slate-900 dark:bg-black backdrop-blur-3xl dark:bg-opacity-50 bg-offWhite bg-opacity-50"
+            class="flex p-2 flex-none cursor-pointer items-center justify-center rounded-xl ring-1 text-brand ring-slate-900/10 dark:ring-slate-700 dark:bg-black backdrop-blur-3xl dark:bg-opacity-50 bg-offWhite bg-opacity-50"
           >
             <span class="sr-only">Open menu</span>
             <Bars3Icon class="h-6 w-6" aria-hidden="true" />
@@ -79,6 +79,7 @@ import LightSwitch from "./LightSwitch.vue";
                   >
                     <div class="relative grid gap-6 px-5 py-6 sm:gap-8 sm:p-8">
                       <div
+                        class="gap-6"
                         v-for="item in route.menuOptions.items"
                         :key="item.name"
                       >
@@ -225,29 +226,58 @@ import LightSwitch from "./LightSwitch.vue";
                       leave-to-class="opacity-0 scale-95"
                     >
                       <DisclosurePanel
-                        class="text-sm px-3 scale-y py-2 flex flex-col bg-transparent gap-y-2"
+                        class="text-sm mt-3 px-3 scale-y py-2 flex flex-col bg-transparent gap-y-2"
                       >
-                        <router-link
+                        <div
                           v-for="item in route.menuOptions.items"
                           :key="item.name"
-                          :to="item.comingSoon ? '' : item.path as string"
-                          :class="
-                            item.comingSoon
-                              ? 'opacity-60 cursor-not-allowed'
-                              : ''
-                          "
-                          class="-mx-3 flex items-start rounded-lg bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-[0.03] p-3"
+                          class="gap-y-2"
                         >
-                          <component
-                            :is="item.icon"
-                            class="h-6 w-6 flex-shrink-0 text-brand"
-                            aria-hidden="true"
-                          />
-                          <div class="ml-4">
-                            <p class="text-base font-medium">{{ item.name }}</p>
-                            <p class="mt-1 text-sm">{{ item.description }}</p>
-                          </div>
-                        </router-link>
+                          <a
+                            v-if="item.url"
+                            :href="item.comingSoon ? '' : item.url"
+                            :class="
+                              item.comingSoon
+                                ? 'opacity-60 cursor-not-allowed'
+                                : ''
+                            "
+                            class="-m-3 flex items-start rounded-lg p-3 transition-all dark:bg-white dark:bg-opacity-10 hover:bg-opacity-50"
+                          >
+                            <component
+                              :is="item.icon"
+                              class="h-6 w-6 flex-shrink-0 text-brand"
+                              aria-hidden="true"
+                            />
+                            <div class="ml-4">
+                              <p class="text-base font-medium">
+                                {{ item.name }}
+                              </p>
+                              <p class="mt-1 text-sm">{{ item.description }}</p>
+                            </div>
+                          </a>
+                          <router-link
+                            v-if="item.path"
+                            :to="item.comingSoon ? '' : item.path"
+                            :class="
+                              item.comingSoon
+                                ? 'opacity-60 cursor-not-allowed'
+                                : ''
+                            "
+                            class="-m-3 flex items-start rounded-lg p-3 transition-all dark:bg-white dark:hover:bg-opacity-10 hover:bg-opacity-50"
+                          >
+                            <component
+                              :is="item.icon"
+                              class="h-6 w-6 flex-shrink-0 text-brand"
+                              aria-hidden="true"
+                            />
+                            <div class="ml-4">
+                              <p class="text-base font-medium">
+                                {{ item.name }}
+                              </p>
+                              <p class="mt-1 text-sm">{{ item.description }}</p>
+                            </div>
+                          </router-link>
+                        </div>
                       </DisclosurePanel>
                     </transition>
                   </Disclosure>
