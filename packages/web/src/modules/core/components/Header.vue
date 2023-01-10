@@ -18,7 +18,7 @@ import LightSwitch from "./LightSwitch.vue";
 <template>
   <Popover class="z-50 fixed top-0 left-0 right-0">
     <div
-      class="mx-auto max-w-7xl px-6 border-b-2 backdrop-blur-xl dark:bg-black dark:bg-opacity-10 border-b-gray-100 dark:border-slate-700"
+      class="mx-auto max-w-7xl px-6 border-b-[1px] backdrop-blur-xl dark:bg-black dark:bg-opacity-10 border-b-gray-100 dark:border-slate-700"
     >
       <div
         class="flex items-center justify-between py-6 md:justify-start md:space-x-10"
