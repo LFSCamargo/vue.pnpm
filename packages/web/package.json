@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "state typegen 'src/**/*.ts?(x)' && vue-tsc && vite build",
+    "build": "xstate typegen 'src/**/*.ts?(x)' && vue-tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "@vitejs/plugin-vue": "^4.0.0",
     "@vueuse/core": "^9.10.0",
     "@vueuse/motion": "2.0.0-beta.12",
+    "@xstate/cli": "^0.4.1",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.20",
     "tailwindcss": "^3.2.4",
