@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+.w3m-loading {
+  padding: 0px 0px !important;
+}
